@@ -72,6 +72,9 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Open Explorer
+vim.keymap.set('n', '<leader>pv', ':<C-U>Ex<CR>')
+
 -- Center cursor after scrolling
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Go [D]own half a page' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Go [U]p half a page' })
