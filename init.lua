@@ -181,7 +181,7 @@ require('lazy').setup {
           map('n', '<leader>hd', gitsigns.diffthis, '[H]unk [D]iff')
           map('n', '<leader>hD', function()
             gitsigns.diffthis '~'
-          end, '[H]unk [D]iff')
+          end, '[H]unk [D]iff changes')
           map('n', '<leader>td', gitsigns.toggle_deleted, '[T]oggle [D]eleted')
 
           -- Text object
@@ -493,9 +493,7 @@ require('lazy').setup {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
+        python = { 'ruff' },
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
@@ -623,6 +621,12 @@ require('lazy').setup {
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+    end,
+    config = function()
+      require('tokyonight').setup {
+        comments = { italic = false },
+        keywords = { italic = false },
+      }
     end,
   },
 
