@@ -703,6 +703,7 @@ require('lazy').setup {
     end,
   },
 
+  -- Add tmux navigator keys
   {
     'christoomey/vim-tmux-navigator',
     cmd = {
