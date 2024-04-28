@@ -624,8 +624,10 @@ require('lazy').setup {
     end,
     config = function()
       require('tokyonight').setup {
-        comments = { italic = false },
-        keywords = { italic = false },
+        comments = {},
+        keywords = {},
+        functions = {},
+        variables = {},
       }
     end,
   },
