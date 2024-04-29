@@ -86,7 +86,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+-- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- [[ Basic Autocommands ]]
@@ -720,6 +720,35 @@ require('lazy').setup {
       { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
       { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
+  },
+
+  -- Harpoon: jump quickly between files
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local harpoon = require 'harpoon'
+      harpoon:setup()
+      vim.keymap.set('n', '<M-a>', function()
+        harpoon:list():add()
+      end)
+      vim.keymap.set('n', '<M-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+      vim.keymap.set('n', '<M-h>', function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set('n', '<M-j>', function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set('n', '<M-k>', function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set('n', '<M-l>', function()
+        harpoon:list():select(4)
+      end)
+    end,
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
