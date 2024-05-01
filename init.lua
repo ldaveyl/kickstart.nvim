@@ -72,6 +72,9 @@ vim.opt.scrolloff = 10
 -- Remove the annoying swapfile
 vim.opt.swapfile = false
 
+-- Disable inline text for errors (especially useful for Rust dead_code warnings)
+vim.diagnostic.config { virtual_text = false }
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -201,22 +204,22 @@ require('lazy').setup {
     end,
   },
 
-  -- { -- Useful plugin to show you pending keybinds.
-  --   'folke/which-key.nvim',
-  --   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-  --   config = function() -- This is the function that runs, AFTER loading
-  --     require('which-key').setup()
-  --
-  --     -- Document existing key chains
-  --     require('which-key').register {
-  --       ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  --       ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  --       ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  --       ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  --       ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-  --     }
-  --   end,
-  -- },
+  { -- Useful plugin to show you pending keybinds.
+    'folke/which-key.nvim',
+    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+    config = function() -- This is the function that runs, AFTER loading
+      require('which-key').setup()
+
+      -- Document existing key chains
+      require('which-key').register {
+        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+      }
+    end,
+  },
 
   { -- Fuzzy Finder (files, lsp, etc)
     -- <C-C> to quit
@@ -438,7 +441,7 @@ require('lazy').setup {
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
