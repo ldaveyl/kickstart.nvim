@@ -75,6 +75,13 @@ vim.opt.scrolloff = 10
 -- Open Explorer
 vim.keymap.set('n', '<leader>pv', ':<C-U>Ex<CR>')
 
+-- Move stuff around in visual mode
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Keep cursor in same spot after joining
+vim.keymap.set('n', 'J', 'mzJ`z')
+
 -- Center cursor after scrolling
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Go [D]own half a page' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Go [U]p half a page' })
