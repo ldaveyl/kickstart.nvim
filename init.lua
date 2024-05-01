@@ -69,6 +69,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Remove the annoying swapfile
+vim.opt.swapfile = false
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -198,22 +201,22 @@ require('lazy').setup {
     end,
   },
 
-  { -- Useful plugin to show you pending keybinds.
-    'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-      }
-    end,
-  },
+  -- { -- Useful plugin to show you pending keybinds.
+  --   'folke/which-key.nvim',
+  --   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+  --   config = function() -- This is the function that runs, AFTER loading
+  --     require('which-key').setup()
+  --
+  --     -- Document existing key chains
+  --     require('which-key').register {
+  --       ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+  --       ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+  --       ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+  --       ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+  --       ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  --     }
+  --   end,
+  -- },
 
   { -- Fuzzy Finder (files, lsp, etc)
     -- <C-C> to quit
@@ -729,34 +732,53 @@ require('lazy').setup {
     },
   },
 
-  -- Harpoon: jump quickly between files
   {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      local harpoon = require 'harpoon'
-      harpoon:setup()
-      vim.keymap.set('n', '<M-a>', function()
-        harpoon:list():add()
-      end)
-      vim.keymap.set('n', '<M-e>', function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end)
-      vim.keymap.set('n', '<M-h>', function()
-        harpoon:list():select(1)
-      end)
-      vim.keymap.set('n', '<M-j>', function()
-        harpoon:list():select(2)
-      end)
-      vim.keymap.set('n', '<M-k>', function()
-        harpoon:list():select(3)
-      end)
-      vim.keymap.set('n', '<M-l>', function()
-        harpoon:list():select(4)
-      end)
-    end,
+    'cbochs/grapple.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
+    opts = {
+      scope = 'global', -- also try out "git_branch"
+      icons = true, -- setting to "true" requires "nvim-web-devicons"
+      status = false,
+    },
+    keys = {
+      { '<M-a>', '<cmd>Grapple toggle<cr>', desc = 'Tag a file' },
+      { '<M-e>', '<cmd>Grapple toggle_tags<cr>', desc = 'Toggle tags menu' },
+
+      { '<M-h>', '<cmd>Grapple select index=1<cr>', desc = 'Select first tag' },
+      { '<M-t>', '<cmd>Grapple select index=2<cr>', desc = 'Select second tag' },
+      { '<M-n>', '<cmd>Grapple select index=3<cr>', desc = 'Select third tag' },
+      { '<M-s>', '<cmd>Grapple select index=4<cr>', desc = 'Select fourth tag' },
+    },
   },
+
+  -- -- Harpoon: jump quickly between files
+  -- {
+
+  --   branch = 'harpoon2',
+  --   dependencies = { 'nvim-lua/plenary.nvim' },
+  --   config = function()
+  --     local harpoon = require 'harpoon'
+  --     harpoon:setup()
+  --     vim.keymap.set('n', '<M-a>', function()
+  --       harpoon:list():add()
+  --     end)
+  --     vim.keymap.set('n', '<M-e>', function()
+  --       harpoon.ui:toggle_quick_menu(harpoon:list())
+  --     end)
+  --     vim.keymap.set('n', '<M-h>', function()
+  --       harpoon:list():select(1)
+  --     end)
+  --     vim.keymap.set('n', '<M-j>', function()
+  --       harpoon:list():select(2)
+  --     end)
+  --     vim.keymap.set('n', '<M-k>', function()
+  --       harpoon:list():select(3)
+  --     end)
+  --     vim.keymap.set('n', '<M-l>', function()
+  --       harpoon:list():select(4)
+  --     end)
+  --   end,
+  -- },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
