@@ -92,6 +92,9 @@ vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Go [D]own half a page' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Go [U]p half a page' })
 
+-- When pasting yoinked text over another value, keep original value
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste and keep yoink' })
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
