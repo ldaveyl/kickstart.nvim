@@ -753,15 +753,17 @@ require('lazy').setup {
       },
     },
     keys = {
-      { '<M-a>', '<cmd>Grapple toggle<cr>', desc = 'Tag a file' },
-      { '<M-e>', '<cmd>Grapple toggle_tags<cr>', desc = 'Toggle tags menu' },
+      { '<leader>a', '<cmd>Grapple toggle<cr>', desc = 'Tag a file' },
+      { '<leader>e', '<cmd>Grapple toggle_tags<cr>', desc = 'Toggle tags menu' },
 
-      { '<M-h>', '<cmd>Grapple select index=1<cr>', desc = 'Select first tag' },
-      { '<M-j>', '<cmd>Grapple select index=2<cr>', desc = 'Select second tag' },
-      { '<M-k>', '<cmd>Grapple select index=3<cr>', desc = 'Select third tag' },
-      { '<M-l>', '<cmd>Grapple select index=4<cr>', desc = 'Select fourth tag' },
+      { '<leader>1', '<cmd>Grapple select index=1<cr>', desc = 'Select first tag' },
+      { '<leader>2', '<cmd>Grapple select index=2<cr>', desc = 'Select second tag' },
+      { '<leader>3', '<cmd>Grapple select index=3<cr>', desc = 'Select third tag' },
+      { '<leader>4', '<cmd>Grapple select index=4<cr>', desc = 'Select fourth tag' },
+      { '<leader>5', '<cmd>Grapple select index=5<cr>', desc = 'Select fifth tag' },
+      { '<leader>6', '<cmd>Grapple select index=6<cr>', desc = 'Select sixth tag' },
 
-      { '<M-s>', '<cmd>Grapple toggle_scopes<cr>', desc = 'Show scopes' },
+      { '<leader>s', '<cmd>Grapple toggle_scopes<cr>', desc = 'Show scopes' },
     },
   },
 
