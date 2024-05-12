@@ -520,7 +520,7 @@ require('lazy').setup {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'ruff' },
+        python = { 'isort', 'black' },
         r = { 'styler' },
         rmd = { 'styler' },
         sh = { 'beautysh' },
