@@ -72,6 +72,9 @@ vim.opt.scrolloff = 10
 -- Remove the annoying swapfile
 vim.opt.swapfile = false
 
+-- 'gg' moves cursor to beginning of beginning of line (default for normal vim)
+-- vim.opt.startofline = true
+
 -- Disable inline text for errors (especially useful for Rust dead_code warnings)
 vim.diagnostic.config { virtual_text = false }
 
@@ -423,6 +426,7 @@ require('lazy').setup {
         rust_analyzer = {},
         basedpyright = {},
         r_language_server = {},
+        bashls = {},
         -- clangd = {},
         -- gopls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
