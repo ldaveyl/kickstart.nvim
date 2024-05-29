@@ -85,7 +85,10 @@ vim.diagnostic.config { virtual_text = false }
 --  See `:help vim.keymap.set()`
 
 -- Open Explorer
-vim.keymap.set('n', '<leader>pv', ':<C-U>Ex<CR>')
+vim.keymap.set('n', '<leader>pv', ':<C-U>Ex<CR>', { desc = 'Open Netrw' })
+
+-- Replace word under cursor
+vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = '[R]eplace [W]ord' })
 
 -- Move stuff around in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
