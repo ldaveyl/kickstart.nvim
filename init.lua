@@ -28,6 +28,9 @@ vim.opt.incsearch = false
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
+-- Better colors
+vim.opt.termguicolors = true
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
@@ -424,13 +427,7 @@ require('lazy').setup {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         rust_analyzer = {},
-        basedpyright = {
-          autoSearchPaths = true,
-          analysis = {
-            diagnosticMode = 'openFilesOnly',
-            useLibraryCodeForTypes = true,
-          },
-        },
+        pyright = {},
         r_language_server = {},
         bashls = {},
         -- clangd = {},
@@ -783,9 +780,18 @@ require('lazy').setup {
       { '<leader>5', '<cmd>Grapple select index=5<cr>', desc = 'Select fifth tag' },
       { '<leader>6', '<cmd>Grapple select index=6<cr>', desc = 'Select sixth tag' },
 
-      { '<leader>s', '<cmd>Grapple toggle_scopes<cr>', desc = 'Show scopes' },
+      { '<leader>ss', '<cmd>Grapple toggle_scopes<cr>', desc = 'Show scopes' },
     },
   },
+
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   version = '*',
+  --   dependencies = 'nvim-tree/nvim-web-devicons',
+  --   config = function()
+  --     require('bufferline').setup {}
+  --   end,
+  -- },
 
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
   --
