@@ -580,6 +580,7 @@ require('lazy').setup {
       luasnip.config.setup {}
 
       cmp.setup {
+        enabled = true, -- Set to false if you don't want suggestions to pop up
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -786,15 +787,6 @@ require('lazy').setup {
       { '<leader>ss', '<cmd>Grapple toggle_scopes<cr>', desc = 'Show scopes' },
     },
   },
-
-  -- {
-  --   'akinsho/bufferline.nvim',
-  --   version = '*',
-  --   dependencies = 'nvim-tree/nvim-web-devicons',
-  --   config = function()
-  --     require('bufferline').setup {}
-  --   end,
-  -- },
 
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
   --
